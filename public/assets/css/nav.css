@@ -1,0 +1,71 @@
+.sidebar {
+    width: 210px; 
+    height: 100% !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#menu-bar:hover {
+    color: rgb(240, 233, 233);
+}
+
+.side-icon-fix {
+    padding-left: 20px;
+    /* margin-left: -0.7rem; */
+}
+
+.sidebar ul li {
+    border-radius: 1rem 0 0 1rem;
+    transition: background-color ease-out 410ms;
+}
+
+.sidebar ul li:hover {
+    background-color: white;
+    color: #002451;
+}
+
+.profile-pic #nav-profile-picture{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    /* background: url(https://www.facebook.com/images/fb_icon_325x325.png); */
+    background-position: 50% 50%;
+    background-size: cover;
+    border-radius: 5px;
+    top: 50%;
+}
+
+#nav-profile-picture-name {
+    display:inline-block;
+    vertical-align:top;
+}
+
+.profile-pic {
+    display:inline-block;
+    vertical-align:top;
+}
+
+#nav-profile-picture-name h6 {
+    position: relative;
+    top:25%;  
+}
+
+.profile-picture-name {
+    margin-top: 6px;
+}
+
+#profile-picture-btn {
+    display: inline-block;
+    height: 100%;
+    padding: 8px 7px 7px 8px;
+    transition: background-color ease-out 410ms;
+    border-radius: 6px;
+    border: none;
+    background: none !important;
+    color: white;
+}
+
+#profile-picture-btn:hover {
+    background-color: #28466b !important;
+    font-weight: bold;
+}

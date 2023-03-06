@@ -1,0 +1,69 @@
+/* BARLOW FONT */
+@font-face {
+    font-family: "Barlow";
+    src: url("../fonts/Barlow/Barlow-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Barlow-SemiBold";
+    src: url("../fonts/Barlow/Barlow-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "Barlow-Bold";
+    src: url("../fonts/Barlow/Barlow-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Barlow-ExtraBold";
+    src: url("../fonts/Barlow/Barlow-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: "Barlow-Black";
+    src: url("../fonts/Barlow/Barlow-Black.ttf");
+}
+
+/* INCONSOLATA */
+@font-face {
+    font-family: "Inconsolata";
+    src: url("../fonts/Inconsolata/Inconsolata-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Inconsolata-Medium";
+    src: url("../fonts/Inconsolata/Inconsolata-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Inconsolata-Bold";
+    src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Inconsolata-ExtraBold";
+    src: url("../fonts/Inconsolata/Inconsolata-ExtraBold.ttf");
+}
+
+@font-face {
+    font-family: "Inconsolata-Black";
+    src: url("../fonts/Inconsolata/Inconsolata-Black.ttf");
+}
+
+/* OSWALD */
+@font-face {
+    font-family: "Oswald";
+    src: url("../fonts/Oswald/Oswald-Regular.ttf");
+}
+
+/* QUICKSAND */
+@font-face {
+    font-family: "Quicksand";
+    src: url("../fonts/Quicksand/Quicksand-Regular.ttf");
+}
+
+/* RUBIK */
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik/Rubik-Regular.ttf");
+}

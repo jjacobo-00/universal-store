@@ -1,0 +1,22 @@
+* {
+    font-family: "Barlow";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none !important;
+}
+
+a {
+    color: inherit;
+}
+
+.custom-bg-blue {
+    background-color: #002451;
+    color: white !important;
+}
+
+.custom-text-blue {
+    background-color: white;
+    color: #002451;
+}
