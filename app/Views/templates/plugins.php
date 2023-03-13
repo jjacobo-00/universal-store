@@ -13,3 +13,8 @@
 
 <!-- JQUERY -->
 <script src="<?= base_url('assets/plugins/jquery/jquery-3.6.2.min.js');?>"></script>
+
+<!-- DATATABLES -->
+<link rel="stylesheet" type="text/css" href="<?= base_url('assets/plugins/DataTables/datatables.min.css');?>">
+<script src="<?= base_url('assets/plugins/DataTables/datatables.min.js');?>"></script>
+<script src="<?= base_url('assets/plugins/DataTables/DataTables-1.13.3/js/dataTables.bootstrap5.min.js');?>"></script>
