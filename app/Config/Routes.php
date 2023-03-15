@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 // INVENTORY
 $routes->get('inventory', 'Admin\InventoryController::index');
 $routes->post('inventory/getAllProducts', 'Admin\InventoryController::getAllProducts');
+$routes->post('inventory/editProduct', 'Admin\InventoryController::editProduct');
 
 
 /*

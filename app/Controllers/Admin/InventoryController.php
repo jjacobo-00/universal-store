@@ -31,8 +31,35 @@ class InventoryController extends BaseController
     }
 
     public function getAllProducts() {
-        // $result = $this->Inventory_model->get()->getResultArray();
-        $result = $this->Inventory_model->getAllProducts();
+        try {
+            $sort = $this->request->getPost('sort');
+            $result = $this->Inventory_model->getAllProducts($sort);
+        } catch (\Throwable $th) {
+            $result = [
+                'statusCode' => $e->getCode(),
+                'msg' => $e->getMessage()
+            ];
+        }
+        return $this->response->setJSON($result);
+    }
+
+    public function editProduct() {
+        try {
+            $id = $this->request->getPost('product_num');
+            $name = $this->request->getPost('title');
+            $description = $this->request->getPost('description');
+
+            $num = $this->Inventory_model->editProduct($id, $name, $description);
+            $result = [
+                'success' => $num,
+                'msg' => $name . ' Update Success'
+            ];
+        } catch (\Throwable $th) {
+            $result = [
+                'statusCode' => $e->getCode(),
+                'msg' => $e->getMessage()
+            ];
+        }
         return $this->response->setJSON($result);
     }
 }

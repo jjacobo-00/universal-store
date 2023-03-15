@@ -69,3 +69,7 @@
     background-color: #28466b !important;
     font-weight: bold;
 }
+
+.align-icon-fix {
+    margin-top: -1rem;
+}
