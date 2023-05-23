@@ -32,7 +32,7 @@
         <div class="col-2 sidebar custom-bg-blue min-vh-100" id="sidebar">
             <ul class="mt-5 h6" style="padding-left: 0;">
                 <li class="pt-2 pb-2 side-icon-fix"><a href="/"><i class="fa-solid fa-gauge me-2 h5 "></i><span class="sidebar-ul-text">Dashboard</span></a></li>
-                <li class="pt-2 pb-2 side-icon-fix"><a href=""><i class="fa-solid fa-cash-register me-2 h5"></i><span class="sidebar-ul-text">Order</span></a></li>
+                <li class="pt-2 pb-2 side-icon-fix"><a href="/order"><i class="fa-solid fa-cash-register me-2 h5"></i><span class="sidebar-ul-text">Order</span></a></li>
                 <li class="pt-2 pb-2 side-icon-fix"><a href="/inventory"><i class="fa-solid fa-box me-2 h5"></i><span class="sidebar-ul-text">Inventory</span></a></li>
             </ul>
         </div>

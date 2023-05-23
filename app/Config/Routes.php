@@ -32,10 +32,15 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// ORDER
+$routes->get('order', 'Admin\OrderController::index');
+
 // INVENTORY
 $routes->get('inventory', 'Admin\InventoryController::index');
 $routes->post('inventory/getAllProducts', 'Admin\InventoryController::getAllProducts');
 $routes->post('inventory/editProduct', 'Admin\InventoryController::editProduct');
+$routes->post('inventory/deleteProduct', 'Admin\InventoryController::deleteProduct');
+
 
 
 /*

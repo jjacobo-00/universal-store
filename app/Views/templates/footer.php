@@ -6,6 +6,8 @@
 
         <script src="<?= base_url('assets/js/nav.js');?>"></script>
         <script src="<?= base_url('assets/js/inventory.js');?>"></script>
+        <script src="<?= base_url('assets/js/order.js');?>"></script>
+        <script src="<?= base_url('assets/js/event.js');?>"></script>
         <script src="<?= base_url('assets/js/plugins.js');?>"></script>
     </body>
 </html>

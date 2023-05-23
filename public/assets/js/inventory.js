@@ -31,6 +31,11 @@ const InventoryDataTable = {
                 { title: 'Product Name', data: 'product_name', className: "productName", width: '23%' },
                 { title: 'Description', data: 'product_description', className: "productDescription" },
                 { title: 'Date', data: 'date', className: "productDate", width: '9%'},
+                { title: 'Qty', data: 'product_qty', className: "productDate", width: '5%',
+                    render: function ( data, type, full, meta ) {
+                        return `x${full.product_qty}`;
+                    }
+                },
                 { title: 'SRP', data: 'product_srp', className: "text-end fw-bold", render: $.fn.dataTable.render.number( ',', '.', 2, '₱ ' ), width: '10%' },
                 // { title: 'Actions', data: null, className: "center", defaultContent: `<button class="btn btn-warning" data-id="${data.id}"><i class="fa-solid fa-pencil"></i></button> <button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>` },
                 { title: 'Actions', data: null, sortable: false, width: '8%',
@@ -65,21 +70,40 @@ const InventoryDataTable = {
         const productNum = $(e.currentTarget).closest('tr').find('.productNum').html();
         const description = $(e.currentTarget).closest('tr').find('.productDescription').html();
 
+        $('.current_title').html(name);
+        $('#inv_productNumber').val(productNum);
+        $('#inv_productName').val(name);
+        $('#inv_productDescription').val(description);
+        $('#inventory_edit_modal').attr('data-id', id);
+        $('#inventory_edit_modal').modal('show');
+    },
+    delete: (e) => {
+        const id = $(e.currentTarget).closest('tr').find('.productNum').html();
+        const name = $(e.currentTarget).closest('tr').find('.productName').html();
+
         Swal.fire({
-            title: `Edit ${name}?`,
-            icon: 'warning',
+            title: `Delete ${name}?`,
+            icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#002451',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, edit'
           }).then((result) => {
             if (result.isConfirmed) {
-                $('.current_title').html(name);
-                $('#inv_productNumber').val(productNum);
-                $('#inv_productName').val(name);
-                $('#inv_productDescription').val(description);
-                $('#inventory_edit_modal').attr('data-id', id);
-                $('#inventory_edit_modal').modal('show');
+                $.ajax({
+                    url: "/inventory/deleteProduct",
+                    data: {id: id, name: name},
+                    method: "POST",
+                    success: (res) => {
+                        if(parseInt(res.success) > 0) {
+                            $('#inventory-table').DataTable().destroy();
+                            sort = 'desc';
+                            InventoryDataTable.init(sort);
+                            toastr["success"](res.msg);
+                            
+                        } else { console.log(res) }
+                    }
+                }); 
             }
         })
         
@@ -95,23 +119,35 @@ const InventoryForm = {
         const title = $('#inv_productName').val();
         const description = $('#inv_productDescription').val();
 
-        let check = validateForm(formID);
-        if(check == true) {
-            $.ajax({
-                url: "/inventory/editProduct",
-                data: {product_num: id, title: title, description: description},
-                method: "POST",
-                success: (res) => {
-                    if(parseInt(res.success) > 0) {
-                        $('#inventory-table').DataTable().destroy();
-                        sort = 'desc';
-                        InventoryDataTable.init(sort);
-                        toastr["success"](res.msg);
-                        
-                    } else { console.log(res) }
+        Swal.fire({
+            title: `Edit ${title}?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#002451',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, edit'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let check = validateForm(formID);
+                if(check == true) {
+                    $.ajax({
+                        url: "/inventory/editProduct",
+                        data: {id: id, title: title, description: description},
+                        method: "POST",
+                        success: (res) => {
+                            if(parseInt(res.success) > 0) {
+                                $('#inventory-table').DataTable().destroy();
+                                sort = 'desc';
+                                InventoryDataTable.init(sort);
+                                toastr["success"](res.msg);
+                                
+                            } else { console.log(res) }
+                        }
+                    }); 
                 }
-            }); 
-        }
+            }
+        })
+        
     },
     // showEditForm: (e) => {
     //     reloadForm('form#inventory_edit_modal');
@@ -124,5 +160,6 @@ $(document).ready(async function() {
     $(document).on('click', 'thead th:eq(3)', (e) => InventoryDataTable.dateSort(e));
     $(document).on('click', '#inv_edit', (e) => InventoryDataTable.edit(e));
     $(document).on('submit', '#inv_edit_form', (e) => InventoryForm.editSubmit(e));
+    $(document).on('click', '#inv_delete', (e) => InventoryDataTable.delete(e));
     // $(document).on('shown.bs.modal', '#inventory_edit_modal', (e) => InventoryForm.showEditForm(e));
 });

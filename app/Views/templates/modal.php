@@ -26,8 +26,8 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-warning">Edit</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>
         </form>
         

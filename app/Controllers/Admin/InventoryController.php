@@ -45,7 +45,7 @@ class InventoryController extends BaseController
 
     public function editProduct() {
         try {
-            $id = $this->request->getPost('product_num');
+            $id = $this->request->getPost('id');
             $name = $this->request->getPost('title');
             $description = $this->request->getPost('description');
 
@@ -56,8 +56,27 @@ class InventoryController extends BaseController
             ];
         } catch (\Throwable $th) {
             $result = [
-                'statusCode' => $e->getCode(),
-                'msg' => $e->getMessage()
+                'statusCode' => $th->getCode(),
+                'msg' => $th->getMessage()
+            ];
+        }
+        return $this->response->setJSON($result);
+    }
+
+    public function deleteProduct() {
+        try {
+            $id = $this->request->getPost('id');
+            $name = $this->request->getPost('title');
+
+            $num = $this->Inventory_model->deleteProduct($id, 0);
+            $result = [
+                'success' => $num,
+                'msg' => $name . ' Delete Success'
+            ];
+        } catch (\Throwable $th) {
+            $result = [
+                'statusCode' => $th->getCode(),
+                'msg' => $th->getMessage()
             ];
         }
         return $this->response->setJSON($result);
